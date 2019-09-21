@@ -45,7 +45,7 @@ public class RenamerThread extends Thread {
 	@Override
 	public void run() {
 		System.out.println("== RENAMER ==");
-		System.out.println("Индекс: " + assetsIndex + ", действие: " + action.name());
+		System.out.println("Index: " + assetsIndex + ", action: " + action.name());
 
 		try {
 			if(action == Action.DECODE) {
@@ -61,7 +61,7 @@ public class RenamerThread extends Thread {
 					try {
 						File resource = new File(assetsDir, Main.OBJECTS_DIR + File.separator + entry.getValue().hash.substring(0, 2) + File.separator + entry.getValue().hash);
 						File destination = new File(assetsDir, entry.getKey().replace("/", File.separator));
-						System.out.println("Обработка: " + entry.getKey());
+						System.out.println("Traitement: " + entry.getKey());
 						destination.getParentFile().mkdirs();
 						Files.copy(resource.toPath(), destination.toPath(), StandardCopyOption.REPLACE_EXISTING);
 					} catch (Exception ex) {
@@ -75,7 +75,7 @@ public class RenamerThread extends Thread {
 					}
 
 					if(isInterrupted()) {
-						System.out.println("Задание было прервано.");
+						System.out.println("La tâche a été interrompue.");
 						if(endHandler != null) {
 							Platform.runLater(() -> endHandler.run());
 						}
@@ -106,7 +106,7 @@ public class RenamerThread extends Thread {
 						renamed.getParentFile().mkdirs();
 						Files.copy(resource.toPath(), renamed.toPath(), StandardCopyOption.REPLACE_EXISTING);
 
-						System.out.println("Обработка: " + key);
+						System.out.println("Traitement: " + key);
 
 						newIndex.objects.put(key, new AssetsIndex.Entry(hash, resource.length()));
 
@@ -121,7 +121,7 @@ public class RenamerThread extends Thread {
 							Platform.runLater(() -> progressHandler.run());
 						}
 						if(isInterrupted()) {
-							System.out.println("Задание было прервано.");
+							System.out.println("La tâche a été interrompue.");
 							if(endHandler != null) {
 								Platform.runLater(() -> endHandler.run());
 							}
@@ -142,7 +142,7 @@ public class RenamerThread extends Thread {
 			ex.printStackTrace();
 		}
 
-		System.out.println("Завершено!");
+		System.out.println("Terminé!");
 
 		if(endHandler != null) {
 			Platform.runLater(() -> endHandler.run());

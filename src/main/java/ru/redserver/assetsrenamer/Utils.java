@@ -33,7 +33,7 @@ public class Utils {
 	public static void showAlert(String message) {
 		Alert alert = new Alert(Alert.AlertType.WARNING);
 		alert.setHeaderText(null);
-		alert.setTitle("Сообщение");
+		alert.setTitle("Message");
 		alert.setContentText(message);
 		alert.initStyle(StageStyle.UTILITY);
 		alert.show();

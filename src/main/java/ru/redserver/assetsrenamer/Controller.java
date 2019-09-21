@@ -34,7 +34,7 @@ public class Controller implements Initializable {
 	public Controller() {
 		fileChooser = new FileChooser();
 		fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Файл JSON", "*.json"));
-		fileChooser.setTitle("Выберите файл индекса");
+		fileChooser.setTitle("Sélectionnez le fichier d'index");
 
 		File mcDir = Utils.getMinecraftDir();
 		if(mcDir != null && mcDir.exists()) {
@@ -63,13 +63,13 @@ public class Controller implements Initializable {
 				Action selectedAction = choiceAction.getSelectionModel().getSelectedItem();
 
 				if(indexFile == null) {
-					Utils.showAlert("Не выбран файл индекса.");
+					Utils.showAlert("Aucun fichier d'index sélectionné.");
 					return;
 				} else if(!indexFile.exists()) {
-					Utils.showAlert("Файл индекса не существует.");
+					Utils.showAlert("Le fichier d'index n'existe pas.");
 					return;
 				} else if(selectedAction == Action.DECODE && !new File(indexFile.getParentFile().getParentFile(), Main.OBJECTS_DIR).exists()) {
-					Utils.showAlert("Отсутствует папка " + Main.OBJECTS_DIR + ".");
+					Utils.showAlert("Dossier manquant" + Main.OBJECTS_DIR + ".");
 					return;
 				}
 				task = new RenamerThread(indexFile, selectedAction);
@@ -93,7 +93,7 @@ public class Controller implements Initializable {
 		choiceAction.setDisable(lock);
 		buttonBrowse.setDisable(lock);
 		indexFileInput.setDisable(lock);
-		startButton.setText(lock ? "Отмена" : "Пуск");
+		startButton.setText(lock ? "Annuler" : "Début");
 	}
 
 }

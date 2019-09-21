@@ -2,8 +2,8 @@ package ru.redserver.assetsrenamer;
 
 public enum Action {
 
-	DECODE("Декодировать - переименовать для редактирования"),
-	ENCODE("Кодировать - создать новый индекс");
+	DECODE("Décoder - renommer pour édition"),
+	ENCODE("Encoder - créer un nouvel index");
 
 	private final String title;
 
